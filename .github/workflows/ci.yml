@@ -1,41 +1,41 @@
-
 name: Fake Metrics Analyzer Pipeline
 
 on: [push, pull_request]
 
-jobs:  
+jobs:
   test-and-coverage:
     runs-on: ubuntu-latest
     env:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Run tests & collect coverage
-      run: |
-        pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-cov
-        pip install -e .
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov codecov
+          pip install -e .
 
-    - name: Run tests
-      run: |
-          --cov=fake_metrics_analyzer \
-          --cov-report=term-missing \
-          --cov-report=xml:coverage.xml \
+      - name: Run tests with coverage
+        run: |
+          pytest --cov=fake_metrics \
+                 --cov-report=term-missing \
+                 --cov-report=xml:coverage.xml \
+                 tests/
 
-    - name: Upload test results to Codecov
-      if: ${{ !cancelled() }}
-      uses: codecov/test-results-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: coverage.xml
-        flags: tests
-        fail_ci_if_error: true
+      - name: Upload coverage to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+          flags: tests
+          fail_ci_if_error: true
