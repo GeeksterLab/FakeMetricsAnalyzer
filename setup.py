@@ -8,11 +8,11 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     description='A tool for analyzing fake metrics like views and likes with anomaly detection.',
-    long_description=open('README.md').read(),
+    long_description=open('README.md', encoding='utf-8').read(),
+    long_description_content_type='text/markdown',
     author='GeeksterLab',
     author_email='GeeksterLab@outlook.com',
-    url='https://github.com/GeeksterLab/Fake_Metrics_Analyzer',
-    packages=find_packages(),
+    url='https://github.com/GeeksterLab/FakeMetricsAnalyzer',
     install_requires=[
         'pandas',
         'numpy',
@@ -25,5 +25,4 @@ setup(
     ],
     python_requires='>=3.10',
 )
-
 
