@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: fake_metrics
+Version: 0.1
+Summary: Projet Fake Metrics : Detecting anomalies in simulated metrics data.
+Author: Geekster
+Author-email: GeeksterLab@outlook.com
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scikit-learn
+Requires-Dist: fpdf
+Requires-Dist: plotly
+Requires-Dist: streamlit
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist
+Dynamic: summary

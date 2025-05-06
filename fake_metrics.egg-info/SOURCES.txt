@@ -1,0 +1,16 @@
+README.md
+setup.py
+fake_metrics.egg-info/PKG-INFO
+fake_metrics.egg-info/SOURCES.txt
+fake_metrics.egg-info/dependency_links.txt
+fake_metrics.egg-info/requires.txt
+fake_metrics.egg-info/top_level.txt
+src/__init__.py
+src/anomaly_detection.py
+src/data_preparation.py
+src/generate_report.py
+src/utils.py
+src/visualization.py
+tests/test_anomaly_detection.py
+tests/test_data_preparation.py
+tests/test_interactive_plot.py
