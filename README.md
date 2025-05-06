@@ -2,7 +2,7 @@
 # 📊 Fake Metrics Analyzer
 
 [![Fake Metrics Analyzer Pipeline](https://github.com/GeeksterLab/FakeMetricsAnalyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/GeeksterLab/FakeMetricsAnalyzer/actions)
-[![codecov](https://codecov.io/gh/GeeksterLab/FakeMetricsAnalyzer/graph/badge.svg?token=JFVJZ7LKDV)](https://codecov.io/gh/GeeksterLab/FakeMetricsAnalyzer)
+[![codecov](https://codecov.io/gh/GeeksterLab/FakeMetricsAnalyzer/branch/master/graph/badge.svg?token=JFVJZ7LKDV)](https://codecov.io/gh/GeeksterLab/FakeMetricsAnalyzer)
 [![PyPI](https://img.shields.io/pypi/v/fake-metrics-analyser.svg)](https://pypi.org/project/fake-metrics-analyser)
 [![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://fakemetricsanalyser.streamlit.app)
 
