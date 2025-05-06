@@ -1,15 +1,13 @@
 
 name: Fake Metrics Analyzer Pipeline
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
-jobs:
-  build:
+jobs:  
+  test-and-coverage:
     runs-on: ubuntu-latest
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     steps:
     - name: Checkout repository
@@ -20,18 +18,24 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    - name: Run tests & collect coverage
       run: |
-        python -m venv venv
-        source venv/bin/activate
+        pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest pytest-cov
+        pip install -e .
 
     - name: Run tests
       run: |
-        source venv/bin/activate
-        pytest --cov=fake_metrics_analyzer --cov-report=term-missing --cov-report=xml
+          --cov=fake_metrics_analyzer \
+          --cov-report=term-missing \
+          --cov-report=xml:coverage.xml \
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v5
+    - name: Upload test results to Codecov
+      if: ${{ !cancelled() }}
+      uses: codecov/test-results-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        files: coverage.xml
+        flags: tests
+        fail_ci_if_error: true
