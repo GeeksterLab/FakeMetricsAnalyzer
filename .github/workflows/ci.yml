@@ -21,7 +21,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest pytest-cov codecov
+          pip install pytest pytest-cov
           pip install -e .
 
       - name: Run tests with coverage
@@ -33,9 +33,10 @@ jobs:
 
       - name: Upload coverage to Codecov
         if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN_FAKE_METRICS }}
           files: coverage.xml
           flags: tests
           fail_ci_if_error: true
+
