@@ -31,5 +31,7 @@ jobs:
         source venv/bin/activate
         pytest --cov=fake_metrics_analyzer --cov-report=term-missing --cov-report=xml
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
