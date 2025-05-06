@@ -6,7 +6,7 @@ jobs:
   test-and-coverage:
     runs-on: ubuntu-latest
     env:
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN_FAKE_METRICS }}
 
     steps:
       - name: Checkout repository
@@ -35,7 +35,7 @@ jobs:
         if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN_FAKE_METRICS }}
           files: coverage.xml
           flags: tests
           fail_ci_if_error: true
